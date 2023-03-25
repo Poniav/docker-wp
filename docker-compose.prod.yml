@@ -9,7 +9,7 @@ services:
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-      - "--certificatesresolvers.myresolver.acme.email=your-email@example.com"
+      - "--certificatesresolvers.myresolver.acme.email=${ACME_EMAIL}"
       - "--certificatesresolvers.myresolver.acme.storage=acme.json"
     ports:
       - "80:80"
@@ -23,11 +23,11 @@ services:
   wordpress:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.wordpress.rule=Host(`your-domain.com`)"
+      - "traefik.http.routers.wordpress.rule=Host(`${DOMAIN_NAME}`)"
       - "traefik.http.routers.wordpress.entrypoints=web"
       - "traefik.http.routers.wordpress.middlewares=redirect-to-https"
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      - "traefik.http.routers.wordpress-secure.rule=Host(`your-domain.com`)"
+      - "traefik.http.routers.wordpress-secure.rule=Host(`${DOMAIN_NAME}`)"
       - "traefik.http.routers.wordpress-secure.entrypoints=websecure"
       - "traefik.http.routers.wordpress-secure.tls.certresolver=myresolver"
 
