@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  wordpress:
+    environment:
+      WORDPRESS_SMTP_HOST: mailhog:1025
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025" # MailHog web UI
+    networks:
+      - frontend
+
+networks:
+  frontend:

@@ -4,6 +4,9 @@
 sudo apt update
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 
+# Install Git
+sudo apt install -y git
+
 # Add Docker repository GPG key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
@@ -22,16 +25,7 @@ sudo systemctl start docker
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.3.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-# Install Golang
-curl -LO https://golang.org/dl/go1.18.1.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.18.1.linux-amd64.tar.gz
-rm go1.18.1.linux-amd64.tar.gz
-
-# Add Go to the PATH
-echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.bashrc
-source ~/.bashrc
-
 # Print versions
 docker --version
 docker-compose --version
-go version
+git --version
