@@ -15,7 +15,7 @@ services:
       - backend
 
   wordpress:
-    build: .
+    image: wordpress:latest
     restart: always
     depends_on:
       - db
