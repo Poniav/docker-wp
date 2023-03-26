@@ -11,6 +11,9 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE_2: ${MATOMO_MYSQL_DATABASE}
+      MYSQL_USER_2: ${MATOMO_MYSQL_USER}
+      MYSQL_PASSWORD_2: ${MATOMO_MYSQL_PASSWORD}
     networks:
       - backend
 
@@ -29,6 +32,22 @@ services:
       - blackstock:/var/www/html/
     ports:
       - "8005:80"
+    networks:
+      - frontend
+      - backend
+
+  matomo:
+    image: matomo:latest
+    restart: always
+    depends_on:
+      - matomo_db
+    environment:
+      MATOMO_DATABASE_HOST: matomo_db
+      MATOMO_DATABASE_USERNAME: ${MATOMO_MYSQL_USER}
+      MATOMO_DATABASE_PASSWORD: ${MATOMO_MYSQL_PASSWORD}
+      MATOMO_DATABASE_DBNAME: ${MATOMO_MYSQL_DATABASE}
+    volumes:
+      - matomo_data:/var/www/html
     networks:
       - frontend
       - backend

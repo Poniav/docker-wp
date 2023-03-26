@@ -31,5 +31,15 @@ services:
       - "traefik.http.routers.wordpress-secure.entrypoints=websecure"
       - "traefik.http.routers.wordpress-secure.tls.certresolver=myresolver"
 
+  matomo:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.matomo.rule=Host(`analytics.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.matomo.entrypoints=web"
+      - "traefik.http.routers.matomo.middlewares=redirect-to-https"
+      - "traefik.http.routers.matomo-secure.rule=Host(`analytics.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.matomo-secure.entrypoints=websecure"
+      - "traefik.http.routers.matomo-secure.tls.certresolver=myresolver"
+
 networks:
   frontend:
