@@ -14,6 +14,9 @@ sudo apt install -y apt-transport-https ca-certificates curl software-properties
 # Install Gzip
 # sudo apt install -y gzip
 
+# Install mysql dump
+sudo apt install -y mysql-client
+
 # Add Docker repository GPG key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 

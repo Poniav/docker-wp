@@ -16,7 +16,7 @@ The .env file share the variables with the shell script. Provide the path of the
 
 2. Test the backup script by running it
 
-`./mysql_backup.sh`
+`bash mysql_backup.sh`
 
 3. Define the schedule task with crontab
 
