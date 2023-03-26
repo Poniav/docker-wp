@@ -15,7 +15,7 @@ services:
       - backend
 
   wordpress:
-    image: wordpress:latest
+    build: .
     restart: always
     depends_on:
       - db
@@ -26,7 +26,7 @@ services:
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
     volumes:
       # - ./wp-config.php:/var/www/html/wp-config.php
-      - ./wp-content:/var/www/html/wp-content
+      - blackstock:/var/www/html/
     ports:
       - "8005:80"
     networks:
@@ -39,3 +39,4 @@ networks:
 
 volumes:
   db_data:
+  blackstock: 
