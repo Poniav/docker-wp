@@ -1,11 +1,18 @@
 #!/bin/bash
 
+# Custom colors
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
 # Update package lists and install prerequisites
 sudo apt update
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 
 # Install Git
 # sudo apt install -y git
+
+# Install Gzip
+# sudo apt install -y gzip
 
 # Add Docker repository GPG key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -29,3 +36,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker --version
 docker-compose --version
 git --version
+gzip --version
+
+# Print a success message with green color
+echo -e "${GREEN}Installation completed successfully!${NC}"
