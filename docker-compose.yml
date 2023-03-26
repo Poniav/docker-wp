@@ -40,9 +40,9 @@ services:
     image: matomo:latest
     restart: always
     depends_on:
-      - matomo_db
+      - db
     environment:
-      MATOMO_DATABASE_HOST: matomo_db
+      MATOMO_DATABASE_HOST: db
       MATOMO_DATABASE_USERNAME: ${MATOMO_MYSQL_USER}
       MATOMO_DATABASE_PASSWORD: ${MATOMO_MYSQL_PASSWORD}
       MATOMO_DATABASE_DBNAME: ${MATOMO_MYSQL_DATABASE}
